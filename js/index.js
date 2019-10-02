@@ -59,10 +59,11 @@ navigationContent.forEach(text => {
 })
 let newLinks = ['Orders','Careers'];
 console.log(newLinks);
-let newATag = document.createElement('a');
+
 newLinks.forEach(text => {
+  let newATag = document.createElement('a');
   newATag.textContent = text;
-  target.appendChild(newATag);
+  target.append(newATag);
   newATag.style.color = 'green';
 })
 //CTA
