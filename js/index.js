@@ -40,3 +40,113 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+
+console.log(siteContent.nav)
+const nav = siteContent.nav;
+delete nav["img-src"];
+const navigationContent = Object.values(nav);
+//I used this to pull the values into an array so I could use array methods.
+// console.log(navigationContent);
+const target = document.querySelector('nav');
+navigationContent.forEach(text => {
+  let aTag = document.createElement('a');
+  aTag.textContent = text;
+  aTag.style.color = 'green';
+  //TASK TO CHANGE NAV TEXT GREEN COMPLETE
+  // console.log(aTag);
+  target.appendChild(aTag);
+})
+let newLinks = ['Orders','Careers'];
+console.log(newLinks);
+let newATag = document.createElement('a');
+newLinks.forEach(text => {
+  newATag.textContent = text;
+  target.appendChild(newATag);
+  newATag.style.color = 'green';
+})
+//CTA
+const cta = siteContent.cta;
+console.log(cta);
+
+const ctaH1 = document.querySelector('h1').textContent = cta.h1;
+console.log(ctaH1);
+
+const button = document.querySelector('button').textContent = cta.button;
+
+const ctaImg = document.querySelector('#cta-img').src = cta["img-src"];
+
+//CTA
+
+//MAIN SECTION
+const mainSection = siteContent["main-content"];
+console.log(mainSection)
+console.log(mainSection["features-h4"])
+const topContent = document.querySelector('.top-content');
+topContent.innerHTML = `
+                  <div class="text-content">
+                      <h4>${mainSection["features-h4"]}</h4>
+                      <p>${mainSection["features-content"]}</p>
+                  </div>
+                  <div class="text-content">
+                      <h4>${mainSection["about-h4"]}</h4>
+                      <p>${mainSection["about-content"]}</p>
+                  </div>
+                  `;
+
+document.querySelector('#middle-img').src = mainSection["middle-img-src"]
+
+const bottomContent = document.querySelector('.bottom-content');
+bottomContent.innerHTML = `
+                  <div class="text-content">
+                      <h4>${mainSection["services-h4"]}</h4>
+                      <p>${mainSection["services-content"]}</p>
+                  </div>
+                  <div class="text-content">
+                      <h4>${mainSection["product-h4"]}</h4>
+                      <p>${mainSection["product-content"]}</p>
+                  </div>
+                  <div class="text-content">
+                      <h4>${mainSection["vision-h4"]}</h4>
+                      <p>${mainSection["vision-content"]}</p>
+                  </div>
+                  `;
+
+//MAIN SECTION
+
+//CONTACT
+// "contact": {
+//   "contact-h4" : "Contact",
+//   "address" : "123 Way 456 Street Somewhere, USA",
+//   "phone" : "1 (888) 888-8888",
+//   "email" : "sales@greatidea.io",
+// },
+
+const contact = document.querySelector('.contact');
+const contactInfo = siteContent.contact;
+console.log(contactInfo);
+
+contact.innerHTML = 
+`
+<section class="contact">
+
+            <h4>${contactInfo["contact-h4"]}</h4>
+
+            <p>${contactInfo.address}</p>
+
+            <p>${contactInfo.phone}</p>
+
+            <p>${contactInfo.email}</p>
+
+        </section>
+`
+
+//CONTACT
+
+//FOOTER
+document.querySelector('footer').innerHTML = `<p>${siteContent.footer.copyright}</p>`
+//FOOTER
+
+
+
+
