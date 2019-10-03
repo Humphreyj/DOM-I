@@ -41,6 +41,8 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
+logo.style.verticalAlign = 'middle';
+
 
 console.log(siteContent.nav)
 const nav = siteContent.nav;
@@ -49,6 +51,11 @@ const navigationContent = Object.values(nav);
 //I used this to pull the values into an array so I could use array methods.
 // console.log(navigationContent);
 const target = document.querySelector('nav');
+
+target.style.display = 'flex';
+target.style.justifyContent = 'space-between';
+target.style.alignItems = 'center';
+
 navigationContent.forEach(text => {
   let aTag = document.createElement('a');
   aTag.textContent = text;
@@ -66,6 +73,9 @@ newLinks.forEach(text => {
   target.append(newATag);
   newATag.style.color = 'green';
 })
+
+target.style.fontWeight = 'bolder';
+target.style.padding = '1em';
 //CTA
 const cta = siteContent.cta;
 console.log(cta);
@@ -73,7 +83,8 @@ console.log(cta);
 const ctaH1 = document.querySelector('h1').textContent = cta.h1;
 console.log(ctaH1);
 
-const button = document.querySelector('button').textContent = cta.button;
+const button = document.querySelector('button');
+button.textContent = cta.button;
 
 const ctaImg = document.querySelector('#cta-img').src = cta["img-src"];
 
@@ -96,6 +107,10 @@ topContent.innerHTML = `
                   `;
 
 document.querySelector('#middle-img').src = mainSection["middle-img-src"]
+document.querySelector('#middle-img').style.width = '90%';
+document.querySelector('#middle-img').style.margin = '0 auto';
+document.querySelector('#middle-img').style.padding = '1%';
+
 
 const bottomContent = document.querySelector('.bottom-content');
 bottomContent.innerHTML = `
@@ -112,6 +127,8 @@ bottomContent.innerHTML = `
                       <p>${mainSection["vision-content"]}</p>
                   </div>
                   `;
+
+document.querySelector('.main-content').style.fontWeight = 'bold';
 
 //MAIN SECTION
 
@@ -148,6 +165,42 @@ contact.innerHTML =
 document.querySelector('footer').innerHTML = `<p>${siteContent.footer.copyright}</p>`
 //FOOTER
 
+
+const container = document.querySelector('.container');
+container.style.padding = '1%';
+container.style.backgroundColor = 'black';
+container.style.color = 'white';
+
+const header = document.querySelector('header');
+
+header.style.backgroundColor = 'white';
+
+
+function changeContent() {
+  container.innerHTML = 
+  `
+  <div class = 'error-div'>
+  <h1 class=errorTitle>CRITICAL ERROR OCCURED</h1>
+  <h4 class='error-text'>Contact Administrator for Support!</h4>
+  <div>
+  `;
+
+  let errorDiv = document.querySelector('.error-div');
+
+  errorDiv.style.padding = '35%';
+  errorDiv.style.display = 'flex';
+  errorDiv.style.flexDirection = 'column';
+  errorDiv.style.justifyContent = 'center';
+  errorDiv.style.alignItems = 'center';
+  errorDiv.style.fontSize = '3em';
+  errorDiv.style.textAlign = 'center';
+
+  
+}
+
+//EVENT LISTENERS
+
+button.addEventListener('click', changeContent);
 
 
 
